@@ -31,12 +31,14 @@ const nextButton = document.querySelector('.next');
 
 let imageIndex = 0;
 
-// INSERISCO LE IMG
+// INSERISCO LE IMG + H2 CON I TOTILI E P CON IL TESTO (DELL'ARRAY IMAGES)
 images.forEach((element,index) =>{
    const domElement = domElementCreator('div');
    domElement.classList.add(`image-${index}`,'my_carousel-item');
    domReference.appendChild(domElement);
-   domElement.innerHTML = `<img src="${element.image}" alt="image ${index}">`
+   domElement.innerHTML = `<img src="${element.image}" alt="image ${index}">
+      <h2>${element.title}</h2> 
+      <p>${element.text}</p>`;
    if(imageIndex==index){
       domElement.classList.add('active');
    }
@@ -49,10 +51,10 @@ previousButton.addEventListener('click', function(){
    imageIndex--;
    allImages.forEach((element,index) => {
       element.classList.remove('active');
-      if (imageIndex<0){
+      if (imageIndex < 0){
             imageIndex = 4;
       }
-      if(imageIndex==index){
+      if(imageIndex === index){
             element.classList.add('active');
       }
    });
@@ -62,10 +64,10 @@ nextButton.addEventListener('click', function(){
    imageIndex++;
    allImages.forEach((element,index) => {
       element.classList.remove('active');
-      if (imageIndex>4){
+      if (imageIndex > 4){
             imageIndex = 0;
       }
-      if(imageIndex==index){
+      if(imageIndex === index){
             element.classList.add('active');
       }
    });
